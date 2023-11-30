@@ -24,4 +24,39 @@ public class Mao {
 	public void setCartas(List<Carta> cartas) {
 		this.cartas = cartas;
 	}
+	
+	public boolean naipesIguais() {
+		for (Carta carta : this.cartas) {
+			System.out.println(carta.getNaipe());
+			System.out.println("#######");
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean temSequencia() {
+		return false;
+	}
+	
+	public int quantidadeDePares() {
+		return -1;
+	}
+	
+	public boolean temTrinca() {
+		return false;
+	}
+	
+	public boolean temQuadra() {
+		return false;
+	}
+	
+	public boolean mesmoNaipe() {
+		return false;
+	}
+	
+	public boolean temSequenciaAlta() {
+		return false;
+	}
+	
 }
