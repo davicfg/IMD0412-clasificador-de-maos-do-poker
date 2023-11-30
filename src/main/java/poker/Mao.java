@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,4 +60,11 @@ public class Mao {
 		return false;
 	}
 	
+	public List<Integer> valoresCartas(){
+		return new ArrayList<>();
+	}
+	
+	public List<Naipe> NaipesDasCartas(){
+		return new ArrayList<>();
+	}
 }
