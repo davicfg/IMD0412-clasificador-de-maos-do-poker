@@ -26,13 +26,9 @@ public class Mao {
 		this.cartas = cartas;
 	}
 	
+	//Davi
 	public boolean naipesIguais() {
-		for (Carta carta : this.cartas) {
-			System.out.println(carta.getNaipe());
-			System.out.println("#######");
-		}
-		
-		return false;
+		return this.naipesDasCartas().stream().map(Naipe::name).distinct().limit(2).count() <= 1;
 		
 	}
 	
@@ -68,8 +64,17 @@ public class Mao {
 	public List<Integer> valoresCartas(){
 		return new ArrayList<>();
 	}
+	
+	
 	//Davi
-	public List<Naipe> NaipesDasCartas(){
-		return new ArrayList<>();
+	public List<Naipe> naipesDasCartas(){
+		ArrayList<Naipe> naipes = new ArrayList<Naipe>();
+		for (Carta carta : this.cartas) {
+			naipes.add(carta.getNaipe());
+		} 
+		for(Naipe naipe: naipes) {
+			System.out.println(naipe.name());
+		}
+		return naipes;
 	}
 }
