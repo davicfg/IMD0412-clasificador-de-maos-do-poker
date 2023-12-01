@@ -19,7 +19,7 @@ public class MaoTest {
 		Carta c5 = new Carta(9, Naipe.COPAS);
 		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
 		Mao mao = new Mao(cartas);
-		boolean resultado = mao.naipesIguais();
+		boolean resultado = mao.mesmoNaipe();
 		
 		Assertions.assertTrue(resultado);
 	}
@@ -33,7 +33,7 @@ public class MaoTest {
 		Carta c5 = new Carta(9, Naipe.PAUS);
 		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
 		Mao mao = new Mao(cartas);
-		boolean resultado = mao.naipesIguais();
+		boolean resultado = mao.mesmoNaipe();
 		
 		Assertions.assertFalse(resultado);
 	}

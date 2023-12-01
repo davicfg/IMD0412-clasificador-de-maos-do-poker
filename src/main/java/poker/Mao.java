@@ -1,7 +1,11 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 
@@ -53,7 +57,8 @@ public class Mao {
 	
 	//Davi
 	public boolean mesmoNaipe() {
-		return false;
+		
+		return new HashSet<Naipe>(this.naipesDasCartas()).size() <= 1;
 	}
 	//Davi
 	public boolean temSequenciaAlta() {
@@ -62,9 +67,14 @@ public class Mao {
 	
 	//Cleiton
 	public List<Integer> valoresCartas(){
-		return new ArrayList<>();
+		ArrayList<Integer> valores = new ArrayList<Integer>();
+		
+		for(Carta carta : this.cartas) {
+			valores.add(carta.getValor());
+		}
+		return valores;
+		
 	}
-	
 	
 	//Davi
 	public List<Naipe> naipesDasCartas(){
@@ -72,9 +82,7 @@ public class Mao {
 		for (Carta carta : this.cartas) {
 			naipes.add(carta.getNaipe());
 		} 
-		for(Naipe naipe: naipes) {
-			System.out.println(naipe.name());
-		}
+
 		return naipes;
 	}
 }
