@@ -2,8 +2,10 @@ package poker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,6 +49,15 @@ public class Mao {
 	
 	//Davi
 	public boolean temTrinca() {
+		Map<Integer,Long> values = 
+			    this.valoresCartas().stream()
+			           .collect(Collectors.groupingBy(Integer::intValue,Collectors.counting()));
+		for(Map.Entry<Integer, Long> value: values.entrySet()) {
+			System.out.println(value.getKey()+": "+value.getValue());
+			if(value.getValue() == 3) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
