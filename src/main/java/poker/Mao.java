@@ -20,7 +20,6 @@ public class Mao {
 	}
 
 	public RankingMao ranking() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -74,7 +73,6 @@ public class Mao {
 			    this.valoresCartas().stream()
 			           .collect(Collectors.groupingBy(Integer::intValue,Collectors.counting()));
 		for(Map.Entry<Integer, Long> value: values.entrySet()) {
-			System.out.println(value.getKey()+": "+value.getValue());
 			if(value.getValue() == 3) {
 				return true;
 			}
@@ -108,7 +106,9 @@ public class Mao {
 	
 	//Davi
 	public boolean temSequenciaAlta() {
-		return false;
+		List<Integer> sequenciaAlta = Arrays.asList(1,10,11,12,13);
+		
+		return this.valoresCartas().containsAll(sequenciaAlta);
 	}
 	
 	//Cleiton

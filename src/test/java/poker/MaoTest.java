@@ -65,4 +65,33 @@ public class MaoTest {
 		
 		Assertions.assertTrue(resultado);
 	}
+	
+	@Test
+	void testTemSequenciaAlta() {
+		Carta c1 = new Carta(1, Naipe.PAUS);
+		Carta c2 = new Carta(10, Naipe.PAUS);
+		Carta c3 = new Carta(11, Naipe.PAUS);
+		Carta c4 = new Carta(12, Naipe.PAUS);
+		Carta c5 = new Carta(13, Naipe.PAUS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		boolean resultado = mao.temSequenciaAlta();
+		
+		Assertions.assertTrue(resultado);
+	}
+	
+	@Test
+	void testTemSequenciaComNaipesDifentes() {
+		Carta c1 = new Carta(1, Naipe.OUROS);
+		Carta c2 = new Carta(10, Naipe.PAUS);
+		Carta c3 = new Carta(11, Naipe.PAUS);
+		Carta c4 = new Carta(12, Naipe.PAUS);
+		Carta c5 = new Carta(13, Naipe.PAUS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		boolean resultado = mao.temSequenciaAlta();
+		
+		Assertions.assertTrue(resultado);
+	}
+
 }
