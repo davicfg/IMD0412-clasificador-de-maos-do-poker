@@ -1,6 +1,7 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,11 +35,32 @@ public class Mao {
 	
 	//Cleiton
 	public boolean temSequencia() {
-		return false;
+		List<Integer> valores = valoresCartas();
+		Collections.sort(valores);
+		
+		for (int i = 0; i < valores.size() - 1; i++) {
+			if (valores.get(i) + 1 != valores.get(i + 1)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
+	
 	//Cleiton
 	public int quantidadeDePares() {
-		return -1;
+		int count = 0;
+		List<Integer> valores = valoresCartas();
+		for (int i = 0; i < valores.size(); i++) {
+			int current = valores.get(i);
+			for (int j = i + 1; j < valores.size(); j++) {
+				if (current == valores.get(j)) {
+					count++;
+					break;
+				}
+			}
+		}
+		return count;
 	}
 	
 	//Davi
@@ -48,6 +70,19 @@ public class Mao {
 	
 	//Cleiton
 	public boolean temQuadra() {
+		List<Integer> valores = valoresCartas();
+		for (int i = 0; i < valores.size(); i++) {
+			int count = 0;
+			int current = valores.get(i);
+			for (int j = 0; j < valores.size(); j++) {
+				if (current == valores.get(j)) {
+					count++;
+				}
+			}
+			if (count == 4) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -55,6 +90,7 @@ public class Mao {
 	public boolean mesmoNaipe() {
 		return false;
 	}
+	
 	//Davi
 	public boolean temSequenciaAlta() {
 		return false;
@@ -62,7 +98,11 @@ public class Mao {
 	
 	//Cleiton
 	public List<Integer> valoresCartas(){
-		return new ArrayList<>();
+		List<Integer> valores = new ArrayList<>();
+		for (Carta carta : this.cartas) {
+			valores.add(carta.getValor());
+		}
+		return valores;
 	}
 	
 	
