@@ -93,5 +93,125 @@ public class MaoTest {
 		
 		Assertions.assertTrue(resultado);
 	}
-
+	
+	@Test
+	void testRoyalStraightFlush() {//ROYAL_STRAIGHT_FLUSH
+		Carta c1 = new Carta(1, Naipe.ESPADAS);
+		Carta c2 = new Carta(10, Naipe.ESPADAS);
+		Carta c3 = new Carta(11, Naipe.ESPADAS);
+		Carta c4 = new Carta(12, Naipe.ESPADAS);
+		Carta c5 = new Carta(13, Naipe.ESPADAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(rankingMao, RankingMao.ROYAL_STRAIGHT_FLUSH);
+	}
+	
+	@Test
+	void testStraightFlush() {//ROYAL_STRAIGHT_FLUSH
+		Carta c1 = new Carta(2, Naipe.OUROS);
+		Carta c2 = new Carta(3, Naipe.OUROS);
+		Carta c3 = new Carta(4, Naipe.OUROS);
+		Carta c4 = new Carta(5, Naipe.OUROS);
+		Carta c5 = new Carta(6, Naipe.OUROS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(rankingMao, RankingMao.STRAIGHT_FLUSH);
+	}
+	
+	@Test
+	void testStraight() {
+		Carta c1 = new Carta(2, Naipe.COPAS);
+		Carta c2 = new Carta(3, Naipe.OUROS);
+		Carta c3 = new Carta(4, Naipe.ESPADAS);
+		Carta c4 = new Carta(5, Naipe.OUROS);
+		Carta c5 = new Carta(6, Naipe.PAUS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(rankingMao, RankingMao.SEQUENCIA);
+	}
+	
+	@Test
+	void testQuadra() {
+		Carta c1 = new Carta(2, Naipe.OUROS);
+		Carta c2 = new Carta(2, Naipe.ESPADAS);
+		Carta c3 = new Carta(2, Naipe.PAUS);
+		Carta c4 = new Carta(2, Naipe.COPAS);
+		Carta c5 = new Carta(6, Naipe.OUROS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(rankingMao, RankingMao.QUADRA);
+	}
+	
+	@Test
+	void testFullHouse() {
+		Carta c1 = new Carta(2, Naipe.OUROS);
+		Carta c2 = new Carta(2, Naipe.ESPADAS);
+		Carta c3 = new Carta(2, Naipe.PAUS);
+		Carta c4 = new Carta(9, Naipe.OUROS);
+		Carta c5 = new Carta(9, Naipe.COPAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(RankingMao.FULL_HOUSE, rankingMao);
+	}
+	
+	@Test
+	void testFlush() {
+		Carta c1 = new Carta(4, Naipe.OUROS);
+		Carta c2 = new Carta(3, Naipe.OUROS);
+		Carta c3 = new Carta(5, Naipe.OUROS);
+		Carta c4 = new Carta(7, Naipe.OUROS);
+		Carta c5 = new Carta(9, Naipe.OUROS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(RankingMao.FLUSH, rankingMao);
+	}
+	
+	@Test
+	void testTrinca() {
+		Carta c1 = new Carta(2, Naipe.OUROS);
+		Carta c2 = new Carta(2, Naipe.ESPADAS);
+		Carta c3 = new Carta(2, Naipe.PAUS);
+		Carta c4 = new Carta(5, Naipe.OUROS);
+		Carta c5 = new Carta(9, Naipe.COPAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(RankingMao.TRINCA, rankingMao);
+	}
+	
+	@Test
+	void testDoisPares() {
+		Carta c1 = new Carta(2, Naipe.OUROS);
+		Carta c2 = new Carta(2, Naipe.ESPADAS);
+		Carta c3 = new Carta(4, Naipe.PAUS);
+		Carta c4 = new Carta(4, Naipe.OUROS);
+		Carta c5 = new Carta(9, Naipe.COPAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(RankingMao.DOIS_PARES, rankingMao);
+	}
+	
+	
 }

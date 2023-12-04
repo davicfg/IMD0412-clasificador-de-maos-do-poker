@@ -20,7 +20,26 @@ public class Mao {
 	}
 
 	public RankingMao ranking() {
-		return null;
+		
+		if(this.temSequenciaAlta() && this.naipesIguais()) {
+			return RankingMao.ROYAL_STRAIGHT_FLUSH;
+		}else if(this.temSequencia() && !this.temSequenciaAlta() && !this.naipesIguais()) {
+			return RankingMao.SEQUENCIA;
+		}else if(this.naipesIguais() && this.temSequencia() ) {
+			return RankingMao.STRAIGHT_FLUSH;
+		}
+		else if(this.temQuadra()) {
+			return RankingMao.QUADRA;
+		}else if(this.temTrinca() && this.quantidadeDePares() == 3) {
+			return RankingMao.FULL_HOUSE;
+		}else if(this.naipesIguais()) {
+			return RankingMao.FLUSH;
+		}else if(this.temTrinca() && this.quantidadeDePares() == 2) {
+			return RankingMao.TRINCA;
+		}else if(!this.temTrinca() && this.quantidadeDePares() == 2) {
+			return RankingMao.DOIS_PARES;
+		}
+		return RankingMao.NADA;
 	}
 
 	public List<Carta> getCartas() {
@@ -64,6 +83,7 @@ public class Mao {
 				}
 			}
 		}
+		System.out.println(count);
 		return count;
 	}
 	
