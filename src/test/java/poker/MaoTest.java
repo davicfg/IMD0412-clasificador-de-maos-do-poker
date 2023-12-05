@@ -213,5 +213,20 @@ public class MaoTest {
 		Assertions.assertEquals(RankingMao.DOIS_PARES, rankingMao);
 	}
 	
+	@Test
+	void testNada() {
+		Carta c1 = new Carta(1, Naipe.OUROS);
+		Carta c2 = new Carta(3, Naipe.ESPADAS);
+		Carta c3 = new Carta(7, Naipe.PAUS);
+		Carta c4 = new Carta(9, Naipe.OUROS);
+		Carta c5 = new Carta(10, Naipe.COPAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+		
+		RankingMao rankingMao = mao.ranking();
+		
+		Assertions.assertEquals(RankingMao.NADA, rankingMao);
+	}
+	
 	
 }
