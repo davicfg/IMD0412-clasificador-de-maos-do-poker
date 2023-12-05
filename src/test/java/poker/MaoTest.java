@@ -95,7 +95,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testRoyalStraightFlush() {//ROYAL_STRAIGHT_FLUSH
+	void testRoyalStraightFlush() throws Exception {
 		Carta c1 = new Carta(1, Naipe.ESPADAS);
 		Carta c2 = new Carta(10, Naipe.ESPADAS);
 		Carta c3 = new Carta(11, Naipe.ESPADAS);
@@ -109,7 +109,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testStraightFlush() {//ROYAL_STRAIGHT_FLUSH
+	void testStraightFlush() throws Exception {
 		Carta c1 = new Carta(2, Naipe.OUROS);
 		Carta c2 = new Carta(3, Naipe.OUROS);
 		Carta c3 = new Carta(4, Naipe.OUROS);
@@ -124,7 +124,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testStraight() {
+	void testStraight() throws Exception {
 		Carta c1 = new Carta(2, Naipe.COPAS);
 		Carta c2 = new Carta(3, Naipe.OUROS);
 		Carta c3 = new Carta(4, Naipe.ESPADAS);
@@ -139,7 +139,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testQuadra() {
+	void testQuadra() throws Exception {
 		Carta c1 = new Carta(2, Naipe.OUROS);
 		Carta c2 = new Carta(2, Naipe.ESPADAS);
 		Carta c3 = new Carta(2, Naipe.PAUS);
@@ -154,7 +154,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testFullHouse() {
+	void testFullHouse() throws Exception {
 		Carta c1 = new Carta(2, Naipe.OUROS);
 		Carta c2 = new Carta(2, Naipe.ESPADAS);
 		Carta c3 = new Carta(2, Naipe.PAUS);
@@ -169,7 +169,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testFlush() {
+	void testFlush() throws Exception {
 		Carta c1 = new Carta(4, Naipe.OUROS);
 		Carta c2 = new Carta(3, Naipe.OUROS);
 		Carta c3 = new Carta(5, Naipe.OUROS);
@@ -184,7 +184,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testTrinca() {
+	void testTrinca() throws Exception {
 		Carta c1 = new Carta(2, Naipe.OUROS);
 		Carta c2 = new Carta(2, Naipe.ESPADAS);
 		Carta c3 = new Carta(2, Naipe.PAUS);
@@ -199,7 +199,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testDoisPares() {
+	void testDoisPares() throws Exception {
 		Carta c1 = new Carta(2, Naipe.OUROS);
 		Carta c2 = new Carta(2, Naipe.ESPADAS);
 		Carta c3 = new Carta(4, Naipe.PAUS);
@@ -214,7 +214,7 @@ public class MaoTest {
 	}
 	
 	@Test
-	void testNada() {
+	void testNada() throws Exception {
 		Carta c1 = new Carta(1, Naipe.OUROS);
 		Carta c2 = new Carta(3, Naipe.ESPADAS);
 		Carta c3 = new Carta(7, Naipe.PAUS);
@@ -228,5 +228,18 @@ public class MaoTest {
 		Assertions.assertEquals(RankingMao.NADA, rankingMao);
 	}
 	
-	
+	@Test
+	void testMaoComDuasCartasRepetidas() throws Exception {
+		Carta c1 = new Carta(1, Naipe.OUROS);
+		Carta c2 = new Carta(1, Naipe.OUROS);
+		Carta c3 = new Carta(7, Naipe.PAUS);
+		Carta c4 = new Carta(9, Naipe.OUROS);
+		Carta c5 = new Carta(10, Naipe.COPAS);
+		List<Carta> cartas = Arrays.asList(new Carta[] { c1, c2, c3, c4, c5 });
+		Mao mao = new Mao(cartas);
+
+		Exception exception = Assertions.assertThrows(Exception.class, () -> mao.ranking());
+
+		Assertions.assertEquals("A mão contem uma carta duplicada!",  exception.getMessage());
+	}
 }

@@ -1,13 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: poker.MaoTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.082 s <<< FAILURE! -- in poker.MaoTest
-poker.MaoTest.test -- Time elapsed: 0.044 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: Not yet implemented
-	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
-	at org.junit.jupiter.api.Assertions.fail(Assertions.java:134)
-	at poker.MaoTest.test(MaoTest.java:11)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 s -- in poker.MaoTest

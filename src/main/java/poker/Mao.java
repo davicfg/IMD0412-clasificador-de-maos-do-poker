@@ -19,7 +19,7 @@ public class Mao {
 		this.setCartas(cartas);
 	}
 
-	public RankingMao ranking() {
+	public RankingMao ranking() throws Exception {
 		
 		if(this.temSequenciaAlta() && this.naipesIguais()) {
 			return RankingMao.ROYAL_STRAIGHT_FLUSH;
@@ -38,7 +38,11 @@ public class Mao {
 			return RankingMao.TRINCA;
 		}else if(!this.temTrinca() && this.quantidadeDePares() == 2) {
 			return RankingMao.DOIS_PARES;
+		}else if (this.temErro()) {
+			throw new Exception("A mão contem uma carta duplicada!"); 
+
 		}
+		
 		return RankingMao.NADA;
 	}
 
@@ -50,13 +54,11 @@ public class Mao {
 		this.cartas = cartas;
 	}
 	
-	//Davi
 	public boolean naipesIguais() {
 		return this.naipesDasCartas().stream().map(Naipe::name).distinct().limit(2).count() <= 1;
 		
 	}
 	
-	//Cleiton
 	public boolean temSequencia() {
 		List<Integer> valores = valoresCartas();
 		Collections.sort(valores);
@@ -70,7 +72,6 @@ public class Mao {
 		return true;
 	}
 	
-	//Cleiton
 	public int quantidadeDePares() {
 		int count = 0;
 		List<Integer> valores = valoresCartas();
@@ -83,11 +84,9 @@ public class Mao {
 				}
 			}
 		}
-		System.out.println(count);
 		return count;
 	}
 	
-	//Davi
 	public boolean temTrinca() {
 		Map<Integer,Long> values = 
 			    this.valoresCartas().stream()
@@ -100,7 +99,6 @@ public class Mao {
 		return false;
 	}
 	
-	//Cleiton
 	public boolean temQuadra() {
 		List<Integer> valores = valoresCartas();
 		for (int i = 0; i < valores.size(); i++) {
@@ -118,20 +116,17 @@ public class Mao {
 		return false;
 	}
 	
-	//Davi
 	public boolean mesmoNaipe() {
 		
 		return new HashSet<Naipe>(this.naipesDasCartas()).size() <= 1;
 	}
 	
-	//Davi
 	public boolean temSequenciaAlta() {
 		List<Integer> sequenciaAlta = Arrays.asList(1,10,11,12,13);
 		
 		return this.valoresCartas().containsAll(sequenciaAlta);
 	}
 	
-	//Cleiton
 	public List<Integer> valoresCartas(){
 		List<Integer> valores = new ArrayList<>();
 		for (Carta carta : this.cartas) {
@@ -141,7 +136,6 @@ public class Mao {
 
 	}
 	
-	//Davi
 	public List<Naipe> naipesDasCartas(){
 		ArrayList<Naipe> naipes = new ArrayList<Naipe>();
 		for (Carta carta : this.cartas) {
@@ -149,5 +143,17 @@ public class Mao {
 		} 
 
 		return naipes;
+	}
+	
+	public boolean temErro() {
+		List<Carta> cartas = getCartas();
+		for (int i = 0; i < cartas.size(); i++) {
+			for (int j = i + 1; j < cartas.size(); j++) {
+				if (cartas.get(i).equals(cartas.get(j))) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
